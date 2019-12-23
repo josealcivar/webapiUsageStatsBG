@@ -7,7 +7,7 @@ router.get('/getData', function(req, res, next) {
 });
 
 
-router.post('/api/saveStatistic', controller.UsageStatsBGPost);
+router.post('/saveStatistic', controller.UsageStatsBGPost);
 
 router.get('/getDataUsage', controller.getDataFromApi);
 
