@@ -42,19 +42,16 @@ const UsageStatsBGPost = async (req, res)=>{
 
 };
 
-const CrearNuevoCliente = async (req, res)=>{
-    dataCliente={
-        Razonsocial: req.body.razonsocial,
-        Cedula: req.body.cedula,
-        Telefono: req.body.telefono,
-        Direccion: req.body.direccion
+const getDataFromApi = async (req, res)=>{
+  let dataAppsUsage={
+        name_app: "UBER"
     };
     try{
-        let t = await inicializarTransaccion();
-        let result = await modelo.Cliente.CrearNuevoCliente(dataCliente, t);
-            console.log("guardo el cliente");
-            t.commit();
-         res.status(200).json(result);
+     
+        let result = await modelo.Usagestatsappsbg.GetAppsName(dataAppsUsage.name_app);
+        console.log("IMPRIME UN REGISTRO"); 
+        console.log(result); 
+        res.status(200).json(result);
     }catch(err){
     
         t.rolback();
@@ -81,5 +78,6 @@ function inicializarTransaccion(){
 
 // retorno de todas las funciones
 return module.exports={
-    UsageStatsBGPost
+    UsageStatsBGPost,
+    getDataFromApi
 };

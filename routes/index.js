@@ -9,6 +9,6 @@ router.get('/getData', function(req, res, next) {
 
 router.post('/api/saveStatistic', controller.UsageStatsBGPost);
 
-router.get('api/getDataUsage', controller.UsageStatsBGPost);
+router.get('/getDataUsage', controller.getDataFromApi);
 
 module.exports = router;
