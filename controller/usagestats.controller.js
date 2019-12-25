@@ -8,18 +8,18 @@ let dataCliente;
 const UsageStatsBGPost = async (req, res)=>{
    // sequelize.query('CALL GetAllClientes()', 
 
-   let datos={
-    app_name:    req.body.razonsocial, 
-    num_celular: req.body.num_celular,
-    movimientos:{
-        fecha: req.body.fecha,
-        hora: req.body.hora,
-        minutos: req.body.minutos,
-        segundos: req.body.segundo,
-        UsageAppsId: 0,
-        DeviceId: 0
-    }
-   };
+//    let datos={
+//     app_name:    req.body.razonsocial, 
+//     num_celular: req.body.num_celular,
+//     movimientos:{
+//         fecha: req.body.fecha,
+//         hora: req.body.hora,
+//         minutos: req.body.minutos,
+//         segundos: req.body.segundo,
+//         UsageAppsId: 0,
+//         DeviceId: 0
+//     }
+//    };
   
    try{
     let t = await inicializarTransaccion();
