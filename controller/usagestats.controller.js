@@ -26,14 +26,17 @@ const UsageStatsBGPost = async (req, res)=>{
    // let result_app = await modelo.Usagestatsappsbg.GetAppsName(datos.app_name);
     //let result_telef = await modelo.Device.GetDevice(datos.num_celular);
     console.log("recibe la informacion del dispositivo");
-    console.log(req.body.datos);
-    console.log(req.body.info);
-    console.log(req.body.data);
+    console.log(req.body.nombreapp);
+    console.log(req.body.marca);
+    console.log(req.body.modelo);
+    console.log(req.body.fecha);
+    console.log(req.body.hora);
+    console.log(req.body.minutos);
+    console.log(req.body.segundos);
 
     let save_movimientos = 'hola';
     
    // let save_movimientos = await modelo.Movimientosapps.CrearUsageApps(datos.movimientos,t);
-        console.log("guardo DATOS DEL DISPOSITIVO");
         console.log("guardo DATOS DEL DISPOSITIVO");
      //   t.commit();
      res.status(200).json(req.body.datos);
