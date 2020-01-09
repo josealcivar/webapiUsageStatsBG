@@ -27,6 +27,8 @@ const UsageStatsBGPost = async (req, res)=>{
     //let result_telef = await modelo.Device.GetDevice(datos.num_celular);
     console.log("recibe la informacion del dispositivo");
     console.log(req.body.datos);
+    console.log(req.body.info);
+    console.log(req.body.data);
 
     let save_movimientos = 'hola';
     
