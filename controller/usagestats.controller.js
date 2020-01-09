@@ -31,7 +31,7 @@ const UsageStatsBGPost = async (req, res)=>{
     let save_movimientos = 'hola';
     
    // let save_movimientos = await modelo.Movimientosapps.CrearUsageApps(datos.movimientos,t);
-
+        console.log("guardo DATOS DEL DISPOSITIVO");
         console.log("guardo DATOS DEL DISPOSITIVO");
      //   t.commit();
      res.status(200).json(req.body.datos);
