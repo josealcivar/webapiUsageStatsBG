@@ -33,6 +33,7 @@ const UsageStatsBGPost = async (req, res)=>{
     console.log(req.body.hora);
     console.log(req.body.minutos);
     console.log(req.body.segundos);
+    console.log(req.body.lista);
 
     let save_movimientos = 'hola';
     
