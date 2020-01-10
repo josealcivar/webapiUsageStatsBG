@@ -22,7 +22,7 @@ const UsageStatsBGPost = async (req, res)=>{
 //    };
   
    try{
-    let t = await inicializarTransaccion();
+   // let t = await inicializarTransaccion();
    // let result_app = await modelo.Usagestatsappsbg.GetAppsName(datos.app_name);
     //let result_telef = await modelo.Device.GetDevice(datos.num_celular);
     console.log("recibe la informacion del dispositivo");
@@ -33,9 +33,21 @@ const UsageStatsBGPost = async (req, res)=>{
     // console.log(req.body.hora);
     // console.log(req.body.minutos);
     // console.log(req.body.segundos);
+    //console.log(req.body.lista);
     console.log(req.body.lista);
 
-    let save_movimientos = 'hola';
+    let valor = req.body.datos;
+    var count = Object.keys(valor).length;
+
+    for(let i=1; i<=Object.keys(valor).length; i++){
+        console.log(valor[i].nombreapp)
+    }
+    console.log(count)
+    
+    valor.forEach(element => {
+        console.log("element");
+        console.log(element);
+    });
     
    // let save_movimientos = await modelo.Movimientosapps.CrearUsageApps(datos.movimientos,t);
         console.log("guardo DATOS DEL DISPOSITIVO");
@@ -43,7 +55,7 @@ const UsageStatsBGPost = async (req, res)=>{
      res.status(200).json(req.body.datos);
 }catch(err){
 
-    t.rolback();
+   // t.rolback();
     res.status(500).json(err);
 
 }
