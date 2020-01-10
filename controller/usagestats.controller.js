@@ -36,7 +36,7 @@ const UsageStatsBGPost = async (req, res)=>{
     //console.log(req.body.lista);
     console.log(req.body.lista);
 
-    let valor = req.body.datos;
+    let valor = req.body.lista;
     var count = Object.keys(valor).length;
 
     for(let i=1; i<=Object.keys(valor).length; i++){
