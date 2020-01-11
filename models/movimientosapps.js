@@ -1,26 +1,33 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  const Movimientosapps = sequelize.define('Movimientosapps', {
+  const Movimientosapp = sequelize.define('Movimientosapp', {
     fecha_uso: DataTypes.DATE,
     hora: DataTypes.INTEGER,
     minutos: DataTypes.INTEGER,
     segundos: DataTypes.INTEGER
   }, {});
-  Movimientosapps.associate = function(models) {
+  Movimientosapp.associate = function(models) {
     // associations can be defined here
-    Movimientosapps.belongsTo(models.Usagestatsappsbg);
-    Movimientosapps.belongsTo(models.Device);
+    Movimientosapp.belongsTo(models.Device);
+    
+    
   };
 
-  Movimientosapps.CrearUsageApps = (movimientos_data, transaction)=>{
+  Movimientosapp.CrearMovimientos = (movimientos_data, transaction)=>{
     return new Promise((resolve, reject)=>{
-      return Movimientosapps.create(movimientos_data, {transaction}).then(result=>{
+      return Movimientosapp.create(movimientos_data, {transaction}).then(result=>{
+        
+        console.log("result movimientos");
+        console.log(result);
         return resolve(result);
       }).catch(fail=>{
+        //transaction.rollback();
+        console.log("fail movimientos");
+        console.log(fail);
         return reject(fail);
       });
     });
   };
 
-  return Movimientosapps;
+  return Movimientosapp;
 };

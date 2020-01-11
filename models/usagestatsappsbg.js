@@ -4,7 +4,8 @@ module.exports = (sequelize, DataTypes) => {
     nombre_app: DataTypes.STRING
   }, {});
   Usagestatsappsbg.associate = function(models) {
-    // associations can be defined here
+    // associations can be defined here Usagestatsappsbgs
+    Usagestatsappsbg.hasMany(models.Movimientosapp, { foreignKey: 'UsageAppsId' });
   };
 
   Usagestatsappsbg.GetAppsName = (ll_nameapp)=>{
@@ -24,11 +25,18 @@ module.exports = (sequelize, DataTypes) => {
 
   
 
-  Usagestatsappsbg.CrearUsageApps = (usageapps, transaction)=>{
+  Usagestatsappsbg.CrearUsageApps = async (usageapps, transaction)=>{
+    console.log(usageapps);
+    let usageapp= await Usagestatsappsbg.GetAppsName(usageapps.nombre_app);
+    if(usageapp!= null || usageapp!= undefined) return usageapp;
     return new Promise((resolve, reject)=>{
       return Usagestatsappsbg.create(usageapps, {transaction}).then(result=>{
-        return resolve(result);
+        //transaction.commit();
+        return resolve(result.get('id'));
       }).catch(fail=>{
+        console.log("fail apps usage create");
+        console.log(fail);
+        //stransaction.rollback();
         return reject(fail);
       });
     });

@@ -23,12 +23,12 @@ module.exports = {
       UsageAppsId: {
         type: Sequelize.INTEGER,
         allowNull: false,
-
         references: {      
           model: 'Usagestatsappsbgs',
           key: 'id'
         }
       },
+      
         DeviceId: {
           type: Sequelize.INTEGER,
           allowNull: false,

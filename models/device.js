@@ -24,15 +24,22 @@ module.exports = (sequelize, DataTypes) => {
     });
   };
 
-  Device.CrearUsageApps = (device_data, transaction)=>{
+  Device.CreateDevices =  async (device_data, transaction)=>{
+    let deviceid= await Device.GetDevice(device_data.numberphone);
+    if(deviceid!= null || deviceid!= undefined) return deviceid;
     return new Promise((resolve, reject)=>{
       return Device.create(device_data, {transaction}).then(result=>{
-        return resolve(result);
+        //transaction.commit();
+        return resolve(result.get('id'));
       }).catch(fail=>{
+        console.log("fail device create");
+        console.log(fail);
+        //transaction.rollback();
         return reject(fail);
       });
     });
   };
+
 
   return Device;
 };

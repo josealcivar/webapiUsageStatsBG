@@ -6,10 +6,10 @@ const modelo = require('../models');
 let dataCliente;
 
 const UsageStatsBGPost = async (req, res)=>{
-   // sequelize.query('CALL GetAllClientes()', 
+   // sequelize.query('CALL GetAllClientes()',
 
 //    let datos={
-//     app_name:    req.body.razonsocial, 
+//     app_name:    req.body.razonsocial,
 //     num_celular: req.body.num_celular,
 //     movimientos:{
 //         fecha: req.body.fecha,
@@ -20,9 +20,9 @@ const UsageStatsBGPost = async (req, res)=>{
 //         DeviceId: 0
 //     }
 //    };
-  
+let t = await inicializarTransaccion();
    try{
-   // let t = await inicializarTransaccion();
+
    // let result_app = await modelo.Usagestatsappsbg.GetAppsName(datos.app_name);
     //let result_telef = await modelo.Device.GetDevice(datos.num_celular);
     console.log("recibe la informacion del dispositivo");
@@ -34,28 +34,52 @@ const UsageStatsBGPost = async (req, res)=>{
     // console.log(req.body.minutos);
     // console.log(req.body.segundos);
     //console.log(req.body.lista);
-    console.log(req.body.lista);
+    //console.log(req.body.datos);
+    let valor = req.body.datos;
 
-    let valor = req.body.lista;
+    let device={
+        numberphone: valor[1].numberphone,
+        marca: valor[1].marca,
+        modelo: valor[1].modelo
+        // createdAt: Date(),
+        // updatedAt: Date()
+    };
+    let numero=valor[1].numberphone;
+
+    let id_device = await modelo.Device.CreateDevices(device,t);
+    console.log("id_device");
+    console.log(id_device);
+
     var count = Object.keys(valor).length;
-
     for(let i=1; i<=Object.keys(valor).length; i++){
-        console.log(valor[i].nombreapp)
+        let app={
+            nombre_app: valor[i].nombreapp
+        };
+        let id_app = await modelo.Usagestatsappsbg.CrearUsageApps(app,t);
+        console.log("id de app");
+        console.log(id_app);
+        let movimiento={
+            fecha_uso: Date(),
+            hora: valor[i].hora,
+            minutos: valor[i].minutos,
+            segundos:valor[i].segundos,
+            UsageAppsId:id_app,
+            DeviceId:id_device
+        };
+
+        let res_movimiento = await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
     }
-    console.log(count)
-    
-    valor.forEach(element => {
-        console.log("element");
-        console.log(element);
-    });
-    
+    //console.log(count)
+    t.commit();
+
    // let save_movimientos = await modelo.Movimientosapps.CrearUsageApps(datos.movimientos,t);
         console.log("guardo DATOS DEL DISPOSITIVO");
-     //   t.commit();
+
      res.status(200).json(req.body.datos);
 }catch(err){
-
-   // t.rolback();
+    console.log("error del servidor");
+    console.log(err);
+    t.rollback();
     res.status(500).json(err);
 
 }
@@ -68,18 +92,18 @@ const getDataFromApi = async (req, res)=>{
         name_app: "UBER"
     };
     try{
-     
+
         let result = await modelo.Usagestatsappsbg.GetAppsName(dataAppsUsage.name_app);
-        console.log("IMPRIME UN REGISTRO"); 
-        console.log(result); 
+        console.log("IMPRIME UN REGISTRO");
+        console.log(result);
         res.status(200).json(result);
     }catch(err){
-    
+
         t.rolback();
         res.status(500).json(err);
- 
+
     }
-    
+
 };
 
 
