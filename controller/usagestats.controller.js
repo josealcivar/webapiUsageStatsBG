@@ -71,11 +71,13 @@ let t = await inicializarTransaccion();
     }
     //console.log(count)
     t.commit();
-
+        let response = {
+            msj: "se guardo satisactoriamente"
+        };
    // let save_movimientos = await modelo.Movimientosapps.CrearUsageApps(datos.movimientos,t);
         console.log("guardo DATOS DEL DISPOSITIVO");
 
-     res.status(200).json(req.body.datos);
+     res.status(200).json(response);
 }catch(err){
     console.log("error del servidor");
     console.log(err);
