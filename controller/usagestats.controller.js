@@ -36,7 +36,7 @@ let t = await inicializarTransaccion();
     //console.log(req.body.lista);
     //console.log(req.body.datos);
     let valor = req.body.datos;
-
+    console.log("##################### VALOR ###############");
     let device={
         numberphone: valor[1].numberphone,
         marca: valor[1].marca,
@@ -47,7 +47,7 @@ let t = await inicializarTransaccion();
     let numero=valor[1].numberphone;
 
     let id_device = await modelo.Device.CreateDevices(device,t);
-    console.log("id_device");
+    console.log("##################### id_device ###############");
     console.log(id_device);
 
     var count = Object.keys(valor).length;
