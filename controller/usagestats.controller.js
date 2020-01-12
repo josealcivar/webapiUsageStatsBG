@@ -60,7 +60,7 @@ let t = await inicializarTransaccion();
         console.log(id_app.get("id"));
         console.log("id_app.get");
         let movimiento={
-            fecha_uso: Date(),
+            fecha_uso: Date("yyyy-MM-dd"),
             hora: valor[i].hora,
             minutos: valor[i].minutos,
             segundos:valor[i].segundos,
