@@ -34,7 +34,7 @@ let t = await inicializarTransaccion();
     // console.log(req.body.minutos);
     // console.log(req.body.segundos);
     //console.log(req.body.lista);
-    //console.log(req.body.datos);
+    console.log(req.body.datos);
     let valor = req.body.datos;
     console.log("##################### VALOR ###############");
     let device={

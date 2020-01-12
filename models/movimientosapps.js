@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
   Movimientosapp.associate = function(models) {
     // associations can be defined here
     Movimientosapp.belongsTo(models.Device);
+    Movimientosapp.belongsTo(models.Usagestatsappsbg,{ foreignKey: 'id'});
     
     
   };
