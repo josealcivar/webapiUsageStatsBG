@@ -28,8 +28,7 @@ module.exports = (sequelize, DataTypes) => {
   Usagestatsappsbg.CrearUsageApps = async (usageapps, transaction)=>{
     console.log(usageapps);
     let usageapp= await Usagestatsappsbg.GetAppsName(usageapps.nombre_app);
-    console.log("imprimeeee");
-    console.log(usageapp.get('id'));
+
     if(usageapp!= null || usageapp!= undefined) return usageapp;
     return new Promise((resolve, reject)=>{
       return Usagestatsappsbg.create(usageapps, {transaction}).then(result=>{
