@@ -31,7 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     return new Promise((resolve, reject)=>{
       return Device.create(device_data, {transaction}).then(result=>{
         //transaction.commit();
-        return resolve(result.get('id'));
+        return resolve(result);
       }).catch(fail=>{
         console.log("fail device create");
         console.log(fail);

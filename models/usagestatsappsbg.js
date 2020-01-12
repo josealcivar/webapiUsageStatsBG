@@ -28,12 +28,13 @@ module.exports = (sequelize, DataTypes) => {
   Usagestatsappsbg.CrearUsageApps = async (usageapps, transaction)=>{
     console.log(usageapps);
     let usageapp= await Usagestatsappsbg.GetAppsName(usageapps.nombre_app);
-
+    console.log("imprime resultado");
+    console.log(usageapp);
     if(usageapp!= null || usageapp!= undefined) return usageapp;
     return new Promise((resolve, reject)=>{
       return Usagestatsappsbg.create(usageapps, {transaction}).then(result=>{
         //transaction.commit();
-        return resolve(result.get('id'));
+        return resolve(result);
       }).catch(fail=>{
         console.log("fail apps usage create");
         console.log(fail);

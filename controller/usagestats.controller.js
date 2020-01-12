@@ -57,8 +57,7 @@ let t = await inicializarTransaccion();
         };
         let id_app = await modelo.Usagestatsappsbg.CrearUsageApps(app,t);
         console.log("id de app");
-        console.log(id_app.get("id"));
-        console.log("id_app.get");
+
         let movimiento={
             fecha_uso: Date("yyyy-MM-dd"),
             hora: valor[i].hora,
