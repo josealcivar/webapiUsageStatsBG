@@ -48,7 +48,7 @@ let t = await inicializarTransaccion();
 
     let id_device = await modelo.Device.CreateDevices(device,t);
     console.log("##################### id_device ###############");
-    console.log(id_device);
+    console.log(id_device.get("id"));
 
     var count = Object.keys(valor).length;
     for(let i=1; i<=Object.keys(valor).length; i++){
@@ -57,16 +57,19 @@ let t = await inicializarTransaccion();
         };
         let id_app = await modelo.Usagestatsappsbg.CrearUsageApps(app,t);
         console.log("id de app");
-        console.log(id_app);
+        console.log(id_app.get("id"));
+        console.log("id_app.get");
         let movimiento={
             fecha_uso: Date(),
             hora: valor[i].hora,
             minutos: valor[i].minutos,
             segundos:valor[i].segundos,
-            UsageAppsId:id_app,
-            DeviceId:id_device
+            UsageAppsId:id_app.get("id"),
+            DeviceId:id_device.get("id")
+        
         };
-
+        console.log("MOVIMIENTOS");
+        console.log(movimiento);
         let res_movimiento = await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
     }
     //console.log(count)
