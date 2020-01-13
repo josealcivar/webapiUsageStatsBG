@@ -36,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     console.log(moment(moment.tz('America/Guayaquil')).subtract(1, "days"));
     console.log(moment(moment.tz('America/Guayaquil')));
     return new Promise((resolve, reject)=>{
-      return Movimientosapp.update(movimientos_data,{
+      return Movimientosapp.update(movimientos_data, {transaction},{
         where:{
           $and:[
             {
