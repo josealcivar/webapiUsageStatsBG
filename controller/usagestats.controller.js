@@ -1,5 +1,6 @@
 'use strict';
 
+var moment = require('moment');
 const sequelize	= require('../models').sequelize;
 const modelo = require('../models');
 
@@ -56,10 +57,9 @@ let t = await inicializarTransaccion();
             nombre_app: valor[i].nombreapp
         };
         let id_app = await modelo.Usagestatsappsbg.CrearUsageApps(app,t);
-        console.log("id de app");
 
         let movimiento={
-            fecha_uso: valor[i].fecha,
+            fecha_uso: moment(moment.tz('America/Guayaquil')),
             hora: valor[i].hora,
             minutos: valor[i].minutos,
             segundos:valor[i].segundos,
@@ -69,7 +69,14 @@ let t = await inicializarTransaccion();
         };
         console.log("MOVIMIENTOS");
         console.log(movimiento);
-        let res_movimiento = await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
+        
+       let is_saved = await modelo.Movimientosapp.ActualizaMovimiento(movimiento, t);
+       console.log(is_saved);
+        if(is_saved==0){
+            console.log("guarda el movimiento");
+            await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
+        }
+      //  
     }
     //console.log(count)
     t.commit();
