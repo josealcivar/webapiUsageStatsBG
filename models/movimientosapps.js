@@ -64,6 +64,7 @@ module.exports = (sequelize, DataTypes) => {
         console.log(moment());
         console.log(moment(moment.tz('America/Guayaquil')));
         console.log("termina fecha");
+        
         return resolve(result);
       }).catch(fail=>{
         //transaction.rollback();
