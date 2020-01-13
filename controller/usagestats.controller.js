@@ -72,7 +72,7 @@ let t = await inicializarTransaccion();
         
        let is_saved = await modelo.Movimientosapp.ActualizaMovimiento(movimiento, t);
        console.log(is_saved);
-        if(is_saved==0){
+        if(is_saved[0]==0){
             console.log("guarda el movimiento");
             await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
         }
