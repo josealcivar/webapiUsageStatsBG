@@ -66,14 +66,14 @@ let t = await inicializarTransaccion();
         };
         console.log("MOVIMIENTOS");
         console.log(movimiento);
-        await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
-    //    let is_saved = await modelo.Movimientosapp.ActualizaMovimiento(movimiento, t);
-    //    console.log(is_saved);
-    //     if(is_saved[0]==0){
-    //         console.log("guarda el movimiento");
-    //         await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
-    //     }
-      //  
+     //   await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
+       let is_saved = await modelo.Movimientosapp.ActualizaMovimiento(movimiento, t);
+       console.log(is_saved);
+        if(is_saved[0]==0){
+            console.log("guarda el movimiento");
+            await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
+        }
+       
     }
     //console.log(count)
     t.commit();
