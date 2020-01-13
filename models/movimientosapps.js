@@ -59,6 +59,11 @@ module.exports = (sequelize, DataTypes) => {
         console.log("result UPDATE");
         console.log(result);
         
+        console.log("FECHAAAAA QUE IMPRIMEEEE");
+        console.log(moment);
+        console.log(moment());
+        console.log(moment(moment.tz('America/Guayaquil')));
+        console.log("termina fecha");
         return resolve(result);
       }).catch(fail=>{
         //transaction.rollback();
