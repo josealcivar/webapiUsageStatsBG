@@ -50,7 +50,12 @@ let t = await inicializarTransaccion();
     let id_device = await modelo.Device.CreateDevices(device,t);
     console.log("##################### id_device ###############");
     console.log(id_device.get("id"));
-
+    console.log("FECHAAAAA QUE IMPRIMEEEE");
+    console.log(moment);
+    console.log(moment());
+    console.log(moment(moment.tz('America/Guayaquil')));
+    console.log("termina fecha");
+    
     var count = Object.keys(valor).length;
     for(let i=1; i<=Object.keys(valor).length; i++){
         let app={
