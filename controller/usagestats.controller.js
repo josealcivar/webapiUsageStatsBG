@@ -52,8 +52,9 @@ let t = await inicializarTransaccion();
     console.log(id_device.get("id"));
     console.log("FECHAAAAA QUE IMPRIMEEEE");
   //  console.log(moment);
-    console.log(moment());
-    console.log(moment(moment.tz('America/Guayaquil')));
+  console.log(new Date());
+    //console.log(moment());
+    //console.log(moment(moment.tz('America/Guayaquil')));
     console.log("termina fecha");
 
     var count = Object.keys(valor).length;
