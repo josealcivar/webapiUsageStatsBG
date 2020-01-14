@@ -25,7 +25,11 @@ sequelize
   })
   .catch(err => {
     console.error("damm... can't connect to server :,( ");
-  });
+   })//.finally(() => {
+  //   console.log("FINALMENTE CIERRA LA APP");
+  //   sequelize.close();
+  // })
+  ;
 
 
 

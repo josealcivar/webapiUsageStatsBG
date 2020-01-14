@@ -8,7 +8,7 @@ let dataCliente;
 
 const UsageStatsBGPost = async (req, res)=>{
    // sequelize.query('CALL GetAllClientes()',
-
+   await sequelize.authenticate();
 //    let datos={
 //     app_name:    req.body.razonsocial,
 //     num_celular: req.body.num_celular,
@@ -82,7 +82,7 @@ let t = await inicializarTransaccion();
         };
    // let save_movimientos = await modelo.Movimientosapps.CrearUsageApps(datos.movimientos,t);
         console.log("guardo DATOS DEL DISPOSITIVO");
-
+        
      res.status(200).json(response);
 }catch(err){
     console.log("error del servidor");
