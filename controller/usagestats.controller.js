@@ -8,7 +8,6 @@ let dataCliente;
 
 const UsageStatsBGPost = async (req, res)=>{
    // sequelize.query('CALL GetAllClientes()',
-   await sequelize.authenticate();
 //    let datos={
 //     app_name:    req.body.razonsocial,
 //     num_celular: req.body.num_celular,
