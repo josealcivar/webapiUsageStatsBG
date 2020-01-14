@@ -80,7 +80,7 @@ module.exports =
     "operatorsAliases":operadores,
     "dialect": "mysql",
     "logging": true,
-	  pool: {
+	  pool: { 
 	    max: 10,
 	    min: 0,
 	    acquire: 30000,
