@@ -49,9 +49,7 @@ module.exports = (sequelize, DataTypes) => {
             {
               DeviceId:movimientos_data.DeviceId
             },
-            
           ]
-          
         },
         
       },{transaction}).then(result=>{
