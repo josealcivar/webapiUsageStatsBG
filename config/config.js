@@ -56,7 +56,13 @@ module.exports =
     "host": "us-cdbr-iron-east-05.cleardb.net",
     "dialect": "mysql",
     "operatorsAliases":operadores,
-    "logging": false
+    "logging": false,
+	  pool: {
+	    max: 5,
+	    min: 0,
+	    acquire: 30000,
+	    idle: 10000
+	  }
   },
   "test": {
     "username": "root",
@@ -73,7 +79,13 @@ module.exports =
     "host": "us-cdbr-iron-east-05.cleardb.net",
     "operatorsAliases":operadores,
     "dialect": "mysql",
-    "logging": false 
+    "logging": false,
+	  pool: {
+	    max: 5,
+	    min: 0,
+	    acquire: 30000,
+	    idle: 10000
+	  } 
   }
 }
 
