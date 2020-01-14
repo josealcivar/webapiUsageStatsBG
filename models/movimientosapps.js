@@ -53,7 +53,7 @@ module.exports = (sequelize, DataTypes) => {
           ]
           
         },
-        {transaction}
+        transaction
       ).then(result=>{
         console.log("result UPDATE");
         
