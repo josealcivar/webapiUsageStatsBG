@@ -27,12 +27,11 @@ module.exports = (sequelize, DataTypes) => {
 
   Device.CreateDevices =  async (device_data, transaction)=>{
     let deviceid= await Device.GetDevice(device_data.numberphone);
-    console.log("resultado Device");
-    console.log(deviceid);
+    
     if(deviceid!= null || deviceid!= undefined) return deviceid;
     return new Promise((resolve, reject)=>{
       return Device.create(device_data, {transaction}).then(result=>{
-        //transaction.commit();
+        
         return resolve(result);
       }).catch(fail=>{
         console.log("fail device create");

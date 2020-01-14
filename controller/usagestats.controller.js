@@ -24,11 +24,8 @@ const UsageStatsBGPost = async (req, res)=>{
 let t = await inicializarTransaccion();
    try{
 
-    console.log("recibe la informacion del dispositivo");
-
-    console.log(req.body.datos);
     let valor = req.body.datos;
-    console.log("##################### VALOR ###############");
+
     let device={
         numberphone: valor[1].numberphone,
         marca: valor[1].marca,
@@ -39,14 +36,7 @@ let t = await inicializarTransaccion();
     let numero=valor[1].numberphone;
 
     let id_device = await modelo.Device.CreateDevices(device,t);
-    console.log("##################### id_device ###############");
-    console.log(id_device.get("id"));
-    console.log("FECHAAAAA QUE IMPRIMEEEE");
-  //  console.log(moment);
-  console.log(new Date());
-    //console.log(moment());
-    //console.log(moment(moment.tz('America/Guayaquil')));
-    console.log("termina fecha");
+
 
     var count = Object.keys(valor).length;
     for(let i=1; i<=Object.keys(valor).length; i++){
@@ -65,10 +55,9 @@ let t = await inicializarTransaccion();
         
         };
         console.log("MOVIMIENTOS");
-        console.log(movimiento);
+
      //   await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
        let is_saved = await modelo.Movimientosapp.ActualizaMovimiento(movimiento, t);
-       console.log(is_saved);
         if(is_saved[0]==0){
             console.log("guarda el movimiento");
             await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
@@ -81,7 +70,6 @@ let t = await inicializarTransaccion();
             msj: "se guardo satisactoriamente"
         };
    // let save_movimientos = await modelo.Movimientosapps.CrearUsageApps(datos.movimientos,t);
-        console.log("guardo DATOS DEL DISPOSITIVO");
         
      res.status(200).json(response);
 }catch(err){

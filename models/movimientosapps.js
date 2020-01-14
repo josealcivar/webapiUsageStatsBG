@@ -32,9 +32,7 @@ module.exports = (sequelize, DataTypes) => {
 
 
   Movimientosapp.ActualizaMovimiento = (movimientos_data, transaction)=>{
-    console.log("FECHAS DE SERVIDOR");
-    console.log(moment(moment.tz('America/Guayaquil')).subtract(1, "days"));
-    console.log(moment(moment.tz('America/Guayaquil')));
+    
     return new Promise((resolve, reject)=>{
       return Movimientosapp.update(movimientos_data,{
         where:{
@@ -57,13 +55,6 @@ module.exports = (sequelize, DataTypes) => {
         }
       }).then(result=>{
         console.log("result UPDATE");
-        console.log(result);
-        console.log(new Date());
-        console.log("FECHAAAAA QUE IMPRIMEEEE");
-      //  console.log(moment);
-      
-        //console.log(moment(moment.tz('America/Guayaquil')));
-        console.log("termina fecha");
         
         return resolve(result);
       }).catch(fail=>{
