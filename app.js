@@ -8,6 +8,8 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 
+var middleware_app = require('./middleware/midd_usage');
+
 var bodyParser = require('body-parser');
 
 require("./cors")(app);
@@ -17,6 +19,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/api/saveStatistic',middleware_app);
 
 app.use('/api', indexRouter);
 app.use('/users', usersRouter);

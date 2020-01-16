@@ -4,7 +4,14 @@ module.exports = (sequelize, DataTypes) => {
     numberphone: DataTypes.STRING,
     marca: DataTypes.STRING,
     modelo: DataTypes.STRING
-  }, {});
+  }, {
+    indexes:[
+      {
+        unique: false,
+        fields:['numberphone']
+      }
+     ]
+  });
   Device.associate = function(models) {
     // associations can be defined here
     Device.hasMany(models.Movimientosapp, { foreignKey: 'DeviceId' });

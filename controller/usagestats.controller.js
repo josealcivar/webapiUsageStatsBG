@@ -82,19 +82,59 @@ let t = await inicializarTransaccion();
 
 };
 
+function promiseSqrt(value){
+    
+    return new Promise(function (fulfill, reject){
+        console.log('START execution with value =', value);
+        let times=Math.random() * 100; 
+        console.log("times");
+        console.log(times);
+        console.log("timeout");
+        setTimeout(function() {
+            fulfill({ value: value, result: value * value });
+        }, 0 | times);
+        console.log(Math.random() * 100);
+    });
+}
+ 
 const getDataFromApi = async (req, res)=>{
   let dataAppsUsage={
         name_app: "UBER"
     };
     try{
 
-        let result = await modelo.Usagestatsappsbg.GetAppsName(dataAppsUsage.name_app);
+   //     let result = await modelo.Usagestatsappsbg.GetAppsName(dataAppsUsage.name_app);
         console.log("IMPRIME UN REGISTRO");
-        console.log(result);
+     //   console.log(result);
+
+    var obj = await promiseSqrt(0);
+    console.log('END execution with value =', obj.value, 'and result =', obj.result);
+    obj = await promiseSqrt(1);
+    console.log('END execution with value =', obj.value, 'and result =', obj.result);
+    obj = await promiseSqrt(2);
+    console.log('END execution with value =', obj.value, 'and result =', obj.result);
+    obj = await promiseSqrt(3);
+    console.log('END execution with value =', obj.value, 'and result =', obj.result);
+    obj = await promiseSqrt(4);
+    console.log('END execution with value =', obj.value, 'and result =', obj.result);
+    obj = await promiseSqrt(5);
+    console.log('END execution with value =', obj.value, 'and result =', obj.result);
+    obj = await promiseSqrt(6);
+    console.log('END execution with value =', obj.value, 'and result =', obj.result);
+    obj = await promiseSqrt(7);
+    console.log('END execution with value =', obj.value, 'and result =', obj.result);
+    obj = await promiseSqrt(8);
+    console.log('END execution with value =', obj.value, 'and result =', obj.result);
+    obj = await promiseSqrt(9);
+    console.log('END execution with value =', obj.value, 'and result =', obj.result);
+    obj = await promiseSqrt(10);
+    console.log('END execution with value =', obj.value, 'and result =', obj.result);
+ 
+
         res.status(200).json(result);
     }catch(err){
 
-        t.rolback();
+        //t.rolback();
         res.status(500).json(err);
 
     }
