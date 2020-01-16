@@ -46,14 +46,15 @@ let operadores ={
     $lte: Op.lte,
     $like: Op.like
   };
-
+  //mysql://bba0695d39e2da:f3a25c85@us-cdbr-iron-east-05.cleardb.net/heroku_20a6fbbffc1ca5d?reconnect=true
+// mysql://rpezdsz1mb2e9qzy:nvd26qx7wtpwt5c7@nba02whlntki5w2p.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/owk29u9kd20tiuvk
 module.exports =
 {
   "development": {
-    "username": "bba0695d39e2da",
-    "password": "f3a25c85",
-    "database": "heroku_20a6fbbffc1ca5d",
-    "host": "us-cdbr-iron-east-05.cleardb.net",
+    "username": "rpezdsz1mb2e9qzy",
+    "password": "nvd26qx7wtpwt5c7",
+    "database": "owk29u9kd20tiuvk",
+    "host": "nba02whlntki5w2p.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql",
     "operatorsAliases":operadores,
     "logging": true,
@@ -73,10 +74,10 @@ module.exports =
     
   },
   "production": {
-    "username": "bba0695d39e2da",
-    "password": "f3a25c85",
-    "database": "heroku_20a6fbbffc1ca5d",
-    "host": "us-cdbr-iron-east-05.cleardb.net",
+    "username": "rpezdsz1mb2e9qzy",
+    "password": "nvd26qx7wtpwt5c7",
+    "database": "owk29u9kd20tiuvk",
+    "host": "nba02whlntki5w2p.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "operatorsAliases":operadores,
     "dialect": "mysql",
     "logging": true,
