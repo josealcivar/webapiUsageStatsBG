@@ -46,18 +46,19 @@ let operadores ={
     $lte: Op.lte,
     $like: Op.like
   };
+  // postgres://abvzhicoinlqsv:0ffdbb518b3dc5f72144f7b82976453d928d83f94a8bb77dd05d1a7712437ffa@ec2-174-129-230-117.compute-1.amazonaws.com:5432/daqf6mq5k6b9iv
   //mysql://bba0695d39e2da:f3a25c85@us-cdbr-iron-east-05.cleardb.net/heroku_20a6fbbffc1ca5d?reconnect=true
 // mysql://rpezdsz1mb2e9qzy:nvd26qx7wtpwt5c7@nba02whlntki5w2p.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/owk29u9kd20tiuvk
 module.exports =
 {
   "development": {
-    "username": "rpezdsz1mb2e9qzy",
-    "password": "nvd26qx7wtpwt5c7",
-    "database": "owk29u9kd20tiuvk",
-    "host": "nba02whlntki5w2p.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    "dialect": "mysql",
+    "username": "abvzhicoinlqsv",
+    "password": "0ffdbb518b3dc5f72144f7b82976453d928d83f94a8bb77dd05d1a7712437ffa",
+    "database": "daqf6mq5k6b9iv",
+    "host": "ec2-174-129-230-117.compute-1.amazonaws.com",
     "operatorsAliases":operadores,
-    "logging": true,
+    "dialect": "postgres",
+    "logging": false,
 	  pool: {
 	    max: 10,
 	    min: 0,
@@ -73,13 +74,13 @@ module.exports =
     "dialect": "mysql"
   },
   "production": {
-    "username": "rpezdsz1mb2e9qzy",
-    "password": "nvd26qx7wtpwt5c7",
-    "database": "owk29u9kd20tiuvk",
-    "host": "nba02whlntki5w2p.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "username": "abvzhicoinlqsv",
+    "password": "0ffdbb518b3dc5f72144f7b82976453d928d83f94a8bb77dd05d1a7712437ffa",
+    "database": "daqf6mq5k6b9iv",
+    "host": "ec2-174-129-230-117.compute-1.amazonaws.com",
     "operatorsAliases":operadores,
-    "dialect": "mysql",
-    "logging": true,
+    "dialect": "postgres",
+    "logging": false,
 	  pool: { 
 	    max: 10,
 	    min: 0,
