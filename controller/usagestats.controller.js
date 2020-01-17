@@ -7,19 +7,7 @@ const modelo = require('../models');
 let dataCliente;
 
 const UsageStatsBGPost = async (req, res)=>{
-   // sequelize.query('CALL GetAllClientes()',
-//    let datos={
-//     app_name:    req.body.razonsocial,
-//     num_celular: req.body.num_celular,
-//     movimientos:{
-//         fecha: req.body.fecha,
-//         hora: req.body.hora,
-//         minutos: req.body.minutos,
-//         segundos: req.body.segundo,
-//         UsageAppsId: 0,
-//         DeviceId: 0
-//     }
-//    };
+
 let t = await inicializarTransaccion();
    try{
 
@@ -32,12 +20,17 @@ let t = await inicializarTransaccion();
         // createdAt: Date(),
         // updatedAt: Date()
     };
+
     let numero=valor[1].numberphone;
 
     let id_device = await modelo.Device.CreateDevices(device,t);
+    let battery ={
+        fecha_y_hora:new Date(),
+        porcentaje:valor[1].porcentaje_battery,
+        DeviceId:id_device.get("id")
+    };
+     await modelo.Battery_usage.CreateBatteryUsage(battery,t);
 
-
-    var count = Object.keys(valor).length;
     for(let i=1; i<=Object.keys(valor).length; i++){
         let app={
             nombre_app: valor[i].nombreapp
@@ -45,25 +38,24 @@ let t = await inicializarTransaccion();
         let id_app = await modelo.Usagestatsappsbg.CrearUsageApps(app,t);
 
         let movimiento={
-            fecha_uso: new Date(), //moment(moment.tz('America/Guayaquil')),
+            fecha_uso: moment(moment.tz('America/Guayaquil')), //moment(moment.tz('America/Guayaquil')),
             hora: valor[i].hora,
             minutos: valor[i].minutos,
             segundos:valor[i].segundos,
+            num_veces:valor[i].veces,
             UsageAppsId:id_app.get("id"),
             DeviceId:id_device.get("id")
-        
         };
         console.log("MOVIMIENTOS");
-
+        console.log(movimiento.fecha_uso);
      //   await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
        let is_saved = await modelo.Movimientosapp.ActualizaMovimiento(movimiento, t);
-        if(is_saved[0]==0){
-            console.log("guarda el movimiento");
-            await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
-        }
-       
+        // if(is_saved[0]==0){
+        //     console.log("guarda el movimiento");
+        //     await modelo.Movimientosapp.CrearMovimientos(movimiento, t);
+        // }
     }
-    //console.log(count)
+  
     t.commit();
         let response = {
             msj: "se guardo satisactoriamente"

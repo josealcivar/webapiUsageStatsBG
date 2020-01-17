@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
   Device.associate = function(models) {
     // associations can be defined here
     Device.hasMany(models.Movimientosapp, { foreignKey: 'DeviceId' });
+    Device.hasMany(models.Battery_usage, { foreignKey: 'DeviceId' });
   };
 
 

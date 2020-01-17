@@ -52,12 +52,12 @@ let operadores ={
 module.exports =
 {
   "development": {
-    "username": "abvzhicoinlqsv",
-    "password": "0ffdbb518b3dc5f72144f7b82976453d928d83f94a8bb77dd05d1a7712437ffa",
-    "database": "daqf6mq5k6b9iv",
-    "host": "ec2-174-129-230-117.compute-1.amazonaws.com",
+    "username": "root",
+    "password": "",
+    "database": "usagestatsappsbg",
+    "host": "localhost",
     "operatorsAliases":operadores,
-    "dialect": "postgres",
+    "dialect": "mysql",
     "logging": false,
 	  pool: {
 	    max: 10,

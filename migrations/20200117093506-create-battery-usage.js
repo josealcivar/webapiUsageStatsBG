@@ -1,46 +1,28 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Movimientosapps', {
+    return queryInterface.createTable('Battery_usages', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      fecha_uso: {
+      fecha_y_hora: {
         type: Sequelize.DATE
       },
-      hora: {
+      porcentaje: {
         type: Sequelize.INTEGER
       },
-      minutos: {
-        type: Sequelize.INTEGER
-      },
-      segundos: {
-        type: Sequelize.INTEGER
-      },
-      num_veces: {
-        type: Sequelize.INTEGER
-      },
-      UsageAppsId: {
+      DeviceId: {
         type: Sequelize.INTEGER,
         allowNull: false,
+
         references: {      
-          model: 'Usagestatsappsbgs',
+          model: 'Devices',
           key: 'id'
         }
-      },
-      
-        DeviceId: {
-          type: Sequelize.INTEGER,
-          allowNull: false,
-  
-          references: {      
-            model: 'Devices',
-            key: 'id'
-          }
-         },
+       },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -52,6 +34,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Movimientosapps');
+    return queryInterface.dropTable('Battery_usages');
   }
 };
