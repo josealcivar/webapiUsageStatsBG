@@ -26,7 +26,7 @@ let t = await inicializarTransaccion();
     let id_device = await modelo.Device.CreateDevices(device,t);
     let battery ={
         fecha_y_hora:new Date(),
-        porcentaje:valor[1].porcentaje_battery,
+        porcentaje:parseFloat(valor[1].porcentaje_battery)*100,
         DeviceId:id_device.get("id")
     };
      await modelo.Battery_usage.CreateBatteryUsage(battery,t);
