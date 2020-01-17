@@ -38,7 +38,7 @@ let t = await inicializarTransaccion();
         let id_app = await modelo.Usagestatsappsbg.CrearUsageApps(app,t);
 
         let movimiento={
-            fecha_uso: moment,//moment(moment.tz('America/Guayaquil')), //moment(moment.tz('America/Guayaquil')),
+            fecha_uso: moment(moment.tz('America/Guayaquil')), //moment(moment.tz('America/Guayaquil')),
             hora: valor[i].hora,
             minutos: valor[i].minutos,
             segundos:valor[i].segundos,
