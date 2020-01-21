@@ -124,7 +124,7 @@ const getDataFromApi = async (req, res)=>{
     console.log('END execution with value =', obj.value, 'and result =', obj.result);
  
 
-        res.status(200).json(result);
+        res.status(200).json(dataAppsUsage);
     }catch(err){
 
         //t.rolback();
